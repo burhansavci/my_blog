@@ -6,7 +6,9 @@ module.exports = {
     navigation: [
       { label: "Home", url: "/" },
       { label: "About", url: "/about" }
-    ]
+    ],
+    github:`burhansavci`,
+    linkedin:`burhan-savci`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

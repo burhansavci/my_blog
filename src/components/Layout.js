@@ -9,6 +9,8 @@ import "../styles/blog.css"
 
 const Layout = ({ data, children, isHome }) => {
   const { siteMetadata } = data.site
+  const githubUrl = siteMetadata.github ? `https://github.com/${siteMetadata.github.replace(/^@/, ``)}` : null
+  const linkedinUrl = siteMetadata.linkedin ? `  https://www.linkedin.com/in/${siteMetadata.linkedin.replace(/^@/, ``)}` : null
   console.log(siteMetadata)
   console.log(data)
   return (
@@ -29,7 +31,14 @@ const Layout = ({ data, children, isHome }) => {
                 </div>
 
                 <div className="site-mast-right">
-                  {/*Social links goes here*/}
+                  {siteMetadata.github && <a href={githubUrl} className="site-nav-item" target="_blank"
+                                             rel="noopener noreferrer"><img className="site-nav-icon"
+                                                                            src="/images/icons/github.svg"
+                                                                            alt="Github" /></a>}
+                  {siteMetadata.linkedin && <a href={linkedinUrl} className="site-nav-item" target="_blank"
+                                               rel="noopener noreferrer"><img className="site-nav-icon"
+                                                                              src="/images/icons/linkedin.svg"
+                                                                              alt="Linkedin" /></a>}
                 </div>
 
               </div>
@@ -84,6 +93,8 @@ const LayoutSettingsQuery = props => (
               label
               url
             }
+            github
+            linkedin
           }
         }
         logo: file(relativePath: { eq: "icon.png" }) {
@@ -93,7 +104,7 @@ const LayoutSettingsQuery = props => (
             }
           }
         }
-        coverImage: file(relativePath: { eq: "cover_image.jpg" }) {
+        coverImage: file(relativePath: { eq: "cover_image.png" }) {
           childImageSharp {
             fluid {
               ...GatsbyImageSharpFluid

@@ -2,7 +2,11 @@ module.exports = {
   siteMetadata: {
     title: `Burhan Savcı Blog`,
     description: `My personal blog site`,
-    author: `Burhan Savcı`
+    author: `Burhan Savcı`,
+    navigation: [
+      { label: "Home", url: "/" },
+      { label: "About", url: "/about" }
+    ]
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

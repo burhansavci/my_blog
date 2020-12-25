@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { graphql, StaticQuery, Link } from "gatsby"
 import Img from "gatsby-image"
+import Navigation from "./Navigation"
 
 // Styles
 import "../styles/blog.css"
@@ -42,12 +43,7 @@ const Layout = ({ data, children, isHome }) => {
 
               <nav className="site-nav">
                 <div className="site-nav-left">
-                  {/*Nav component goes here*/}
-                </div>
-                <div className="site-nav-right">
-                  <Link className="site-nav-button" to="/about">
-                    About
-                  </Link>
+                  <Navigation data={siteMetadata.navigation} />
                 </div>
               </nav>
 
@@ -60,8 +56,8 @@ const Layout = ({ data, children, isHome }) => {
         <div className="viewport-bottom">
           <footer className="site-foot">
             <div className="site-foot-nav container">
-              <div className="site-foot-nav-right">
-                {/*Nav component goes here*/}
+              <div className="site-nav-left">
+                <Navigation data={siteMetadata.navigation} navClass="site-nav-item" />
               </div>
             </div>
           </footer>
@@ -84,6 +80,10 @@ const LayoutSettingsQuery = props => (
             title
             author
             description
+            navigation {
+              label
+              url
+            }
           }
         }
         logo: file(relativePath: { eq: "icon.png" }) {
@@ -105,5 +105,6 @@ const LayoutSettingsQuery = props => (
     render={data => <Layout data={data} {...props} />}
   />
 )
+
 
 export default LayoutSettingsQuery

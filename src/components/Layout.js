@@ -16,10 +16,9 @@ const Layout = ({ data, children, isHome }) => {
   return (
     <>
       <div className="viewport">
-
         <div className="viewport-top">
           <header className="site-head"
-                  style={{ ...(data.coverImage.childImageSharp.fluid.src && { backgroundImage: `url(${data.coverImage.childImageSharp.fluid.src})` }) }}>
+                  style={{ ...data.coverImage.childImageSharp.fixed.src && { backgroundImage: `url(${data.coverImage.childImageSharp.fixed.src})` } }}>
             <div className="container">
 
               <div className="site-mast">
@@ -104,10 +103,10 @@ const LayoutSettingsQuery = props => (
             }
           }
         }
-        coverImage: file(relativePath: { eq: "cover_image.png" }) {
+        coverImage: file(relativePath: { eq: "cover-image.png" }) {
           childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
+            fixed(width: 2000, height: 666) {
+              ...GatsbyImageSharpFixed
             }
           }
         }

@@ -2,8 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { graphql, StaticQuery, Link } from "gatsby"
 import Img from "gatsby-image"
-import Navigation from "./Navigation"
-
+import { Navigation } from '.'
 // Styles
 import "../styles/blog.css"
 
@@ -11,8 +10,7 @@ const Layout = ({ data, children, isHome }) => {
   const { siteMetadata } = data.site
   const githubUrl = siteMetadata.github ? `https://github.com/${siteMetadata.github.replace(/^@/, ``)}` : null
   const linkedinUrl = siteMetadata.linkedin ? `  https://www.linkedin.com/in/${siteMetadata.linkedin.replace(/^@/, ``)}` : null
-  console.log(siteMetadata)
-  console.log(data)
+
   return (
     <>
       <div className="viewport">

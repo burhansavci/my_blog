@@ -55,6 +55,7 @@ export const pageQuery = graphql`
                         tag
                     }
                     fields {
+                        slug
                         slugTag
                     }
                     excerpt

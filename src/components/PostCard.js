@@ -1,36 +1,48 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
+import { slugify } from "../util/utilityFunctions"
 
 const PostCard = ({ post }) => {
-  const url = `/${post.slug}/`
-
+  const url = `/${post.fields.slug}/`
   return (
-    <Link to={url} className="post-card">
+    <div>
       <header className="post-card-header">
-        {post.tag && <div className="post-card-tags"><span><a>{post.tag}</a></span></div>}
-        <h2 className="post-card-title">{post.title}</h2>
+        {post.frontmatter.tag &&
+        <Link to={`/tag/${slugify(post.frontmatter.tag)}`} className="post-card-primary-tag">
+          {post.frontmatter.tag}
+        </Link>
+        }
       </header>
-      <section className="post-card-excerpt">{post.excerpt}</section>
-      <footer className="post-card-footer">
-        <div className="post-card-footer-left">
-          <span>{post.author}</span>
-        </div>
-        <div className="post-card-footer-right">
-          {/*Reading time will go here*/}
-        </div>
-      </footer>
-    </Link>
+      <Link to={url} className="post-card">
+        <header className="post-card-header">
+          <h2 className="post-card-title">{post.frontmatter.title}</h2>
+        </header>
+        <section className="post-card-excerpt">{post.excerpt}</section>
+        <footer className="post-card-footer">
+          <div className="post-card-footer-left">
+            <time dateTime={post.frontmatter.date}>{post.frontmatter.date}</time>
+            <span className="bull">•</span>
+            {post.timeToRead} min read
+          </div>
+        </footer>
+      </Link>
+    </div>
   )
 }
 
 PostCard.propTypes = {
   post: PropTypes.shape({
-    slug: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    tag: PropTypes.string,
     excerpt: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired
+    timeToRead: PropTypes.number,
+    frontmatter: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      tag: PropTypes.string,
+      date: PropTypes.string.isRequired
+    }),
+    fields: PropTypes.shape({
+      slug: PropTypes.string.isRequired
+    })
   }).isRequired
 }
 

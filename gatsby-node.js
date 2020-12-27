@@ -22,13 +22,14 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     allMarkdownRemark {
       edges {
         node {
-          id
+          fields{
+           slug
+           }
         }
       }
     }
   }
 `)
-
 
 
 
@@ -40,6 +41,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const posts = result.data.allMarkdownRemark.edges
 
   const indexTemplate = path.resolve(`./src/templates/index.js`)
+  const postTemplate = path.resolve(`./src/templates/post.js`)
+
+  // Create post pages
+  posts.forEach(({ node }) => {
+    node.url = `/${node.fields.slug}/`
+
+    createPage({
+      path: node.url,
+      component: postTemplate,
+      context: {
+        slug: node.fields.slug,
+      },
+    })
+  })
 
   // Create pagination
   paginate({

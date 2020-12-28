@@ -1,16 +1,19 @@
 const { slugify } = require("./src/util/utilityFunctions")
 const path = require(`path`)
 const { paginate } = require(`gatsby-awesome-pagination`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
 
-exports.onCreateNode = ({ node, actions }) => {
+
+exports.onCreateNode = ({ node, actions, getNode }) => {
   if (node.internal.type === "MarkdownRemark") {
     const { createNodeField } = actions
-    const slugFromTitle = slugify(node.frontmatter.title)
+    const relativePath = createFilePath({ node, getNode, basePath: `posts/`, trailingSlash: false })
+    const slugFromFileName = slugify(relativePath)
     const slugFromTag = slugify(node.frontmatter.tag)
     createNodeField({
       node,
       name: "slug",
-      value: slugFromTitle
+      value: slugFromFileName
     })
     createNodeField({
       node,

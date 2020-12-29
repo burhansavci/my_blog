@@ -7,12 +7,18 @@ module.exports = {
       { label: "Home", url: "/" },
       { label: "About", url: "/about" }
     ],
-    github:`burhansavci`,
-    linkedin:`burhan-savci`
+    github: `burhansavci`,
+    linkedin: `burhan-savci`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [`gatsby-remark-prismjs`]
+      }
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-netlify-cms`,
@@ -27,8 +33,8 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/pages`,
-        name: `pages`,
-      },
+        name: `pages`
+      }
     },
     {
       resolve: `gatsby-plugin-manifest`,

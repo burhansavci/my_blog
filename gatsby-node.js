@@ -57,7 +57,23 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const indexTemplate = path.resolve(`./src/templates/index.js`)
   const tagsTemplate = path.resolve(`./src/templates/tag.js`)
+  const aboutTemplate = path.resolve(`./src/templates/about.js`)
   const postTemplate = path.resolve(`./src/templates/post.js`)
+
+  // Create about page
+  paginate({
+    createPage,
+    items: posts,
+    itemsPerPage: 3,
+    component: aboutTemplate,
+    pathPrefix: ({ pageNumber }) => {
+      if (pageNumber === 0) {
+        return `/about`
+      } else {
+        return `/about/page`
+      }
+    }
+  })
 
   // Create tag pages
   tags.forEach((tag) => {

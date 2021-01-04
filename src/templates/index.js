@@ -34,7 +34,7 @@ Index.propTypes = {
 export default Index
 
 export const pageQuery = graphql`
-    query BlogPostQuery($limit: Int!, $skip: Int!) {
+    query ($limit: Int!, $skip: Int!) {
         allMarkdownRemark(
             sort: { order: DESC, fields: [frontmatter___date] },
             limit: $limit,

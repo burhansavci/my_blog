@@ -5,7 +5,6 @@ import { graphql } from "gatsby"
 import { Layout, PostCard, Pagination } from "../components"
 
 const About = ({ data, pageContext }) => {
-  console.log(JSON.stringify(data))
   const { site, allMarkdownRemark, profileImage } = data
   const { siteMetadata } = site
   const githubUrl = siteMetadata.github ? `https://github.com/${siteMetadata.github.replace(/^@/, ``)}` : null

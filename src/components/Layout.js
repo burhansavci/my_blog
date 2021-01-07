@@ -28,11 +28,11 @@ const Layout = ({ data, children, isHome }) => {
                 </div>
 
                 <div className="site-mast-right">
-                  {siteMetadata.github && <a href={githubUrl} className="site-nav-item" target="_blank"
+                  {siteMetadata.github && <a href={githubUrl} className="site-nav-icon-item" target="_blank"
                                              rel="noopener noreferrer"><img className="site-nav-icon"
                                                                             src="/images/icons/github.svg"
                                                                             alt="Github" /></a>}
-                  {siteMetadata.linkedin && <a href={linkedinUrl} className="site-nav-item" target="_blank"
+                  {siteMetadata.linkedin && <a href={linkedinUrl} className="site-nav-icon-item" target="_blank"
                                                rel="noopener noreferrer"><img className="site-nav-icon"
                                                                               src="/images/icons/linkedin.svg"
                                                                               alt="Linkedin" /></a>}

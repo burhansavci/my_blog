@@ -723,6 +723,17 @@ h6 {
     background-position: center;
     background-size: cover;
 }
+.site-nav-icon-item {
+    display: inline-block;
+    padding: 5px 10px;
+    color: #fff;
+    opacity: 0.1;
+}
+
+.site-nav-icon-item:hover {
+    text-decoration: none;
+    opacity: 1;
+}
 
 .site-nav-item {
     text-decoration: none;
@@ -773,7 +784,7 @@ h6 {
     align-items: center;
 }
 
-.site-mast-right .site-nav-item:last-child {
+.site-mast-right .site-nav-icon-item:last-child {
     padding-right: 0;
 }
 

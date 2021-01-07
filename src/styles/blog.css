@@ -727,7 +727,7 @@ h6 {
     display: inline-block;
     padding: 5px 10px;
     color: #fff;
-    opacity: 0.1;
+    opacity: 0.7;
 }
 
 .site-nav-icon-item:hover {
@@ -1098,8 +1098,4 @@ h6 {
 .site-foot-nav-right a {
     display: inline-block;
     padding: 2px 5px;
-}
-
-.site-foot-nav-right a:last-child {
-    padding-right: 0;
 }

@@ -725,15 +725,32 @@ h6 {
 }
 
 .site-nav-item {
+    text-decoration: none;
+    position: relative;
     display: inline-block;
-    padding: 5px 10px;
+    padding: 0 10px;
     color: #fff;
     opacity: 0.7;
+    font-weight: 500;
 }
-
 .site-nav-item:hover {
     text-decoration: none;
     opacity: 1;
+}
+.site-nav-item:after {
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    left: 50%;
+    position: absolute;
+    background: #fff none repeat scroll 0 0;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+.site-nav-item:hover:after {
+    width: 100%;
+    left: 0;
 }
 
 .site-nav-icon {

@@ -1,10 +1,13 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`
+})
 module.exports = {
   siteMetadata: {
     title: `Burhan Savcı Blog`,
     description: `My personal blog site`,
     author: `Burhan Savcı`,
     bioPart1: `I'm a developer in Istanbul Turkey and software developer at ePlatform, I've been building websites and web applications since 2019.`,
-    bioPart2:`I focus mainly on backend development, design patterns, architectural patterns, improving software engineering process and code quality and performance. Besides, I interested in frontend development.`,
+    bioPart2: `I focus mainly on backend development, design patterns, architectural patterns, improving software engineering process and code quality and performance. Besides, I interested in frontend development.`,
     navigation: [
       { label: "Home", url: "/" },
       { label: "About", url: "/about" }
@@ -24,6 +27,13 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-netlify-cms`,
+    `gatsby-plugin-google-analytics`,
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GA_TRACKING_ID
+      }
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {

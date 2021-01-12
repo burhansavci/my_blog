@@ -27,11 +27,11 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-netlify-cms`,
-    `gatsby-plugin-google-analytics`,
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: process.env.GA_TRACKING_ID
+        trackingId: process.env.GA_TRACKING_ID,
+        head: true
       }
     },
     {

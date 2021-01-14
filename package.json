@@ -1,9 +1,9 @@
 {
   "name": "gatsby-starter-default",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "My Blog site",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Burhan Savci <burhansavci@gmail.com>",
   "dependencies": {
     "disqus-react": "^1.0.10",
     "dotenv": "^8.2.0",

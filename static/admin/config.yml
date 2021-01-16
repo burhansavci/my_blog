@@ -16,6 +16,7 @@ collections:
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     extension: 'en.md'
+    format: frontmatter
     editor:
       preview: true
     fields:
@@ -23,15 +24,18 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Author', name: 'author', widget: 'string', default: 'Burhan Savcı' }
-      - { label: 'Tag', name: 'tag', widget: 'select', options:
-        [
-            'Javascript',
-            'ReactJS',
-            'GatsbyJS',
-            'Netlify'
-            '.NET'
-            '.NET Core'
-        ], }
+      - { label: 'Tag',
+          name: 'tag',
+          widget: 'select',
+          options:
+            [
+                'Javascript',
+                'ReactJS',
+                'GatsbyJS',
+                'Netlify',
+                '.NET',
+                '.NET Core',
+            ], }
       - { label: 'Body', name: 'body', widget: 'markdown' }
   # TR
   - name: 'blogTr'
@@ -43,6 +47,7 @@ collections:
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     extension: 'tr.md'
+    format: frontmatter
     editor:
       preview: true
     fields:
@@ -50,13 +55,16 @@ collections:
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Author', name: 'author', widget: 'string', default: 'Burhan Savcı' }
-      - { label: 'Tag', name: 'tag', widget: 'select', options:
-        [
-            'Javascript',
-            'ReactJS',
-            'GatsbyJS',
-            'Netlify'
-            '.NET'
-            '.NET Core'
-        ], }
+      - { label: 'Tag',
+          name: 'tag',
+          widget: 'select',
+          options:
+            [
+                'Javascript',
+                'ReactJS',
+                'GatsbyJS',
+                'Netlify',
+                '.NET',
+                '.NET Core',
+            ], }
       - { label: 'Body', name: 'body', widget: 'markdown' }

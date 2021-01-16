@@ -1,4 +1,5 @@
 ---
+language: en
 title: Second Post From Netlify CMS
 date: 2020-12-28T20:03:40.231Z
 author: Burhan Savcı

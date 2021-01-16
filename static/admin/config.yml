@@ -6,18 +6,57 @@ media_folder: static/images
 public_folder: /images
 
 collections:
-  - name: 'blog'
-    label: 'Blog'
+  # EN
+  - name: 'blogEn'
+    label: 'Blog (English)'
+    filter: { field: language, value: en }
     folder: 'src/pages/posts'
     media_folder: 'static/images'
     public_folder: '/images'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    extension: 'en.md'
     editor:
       preview: true
     fields:
+      - { label: 'Language', name: 'language', widget: hidden, default: en }
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Author', name: 'author', widget: 'string' }
-      - { label: 'Tag', name: 'tag', widget: 'string' }
+      - { label: 'Author', name: 'author', widget: 'string', default: 'Burhan Savcı' }
+      - { label: 'Tag', name: 'tag', widget: 'select', options:
+        [
+            'Javascript',
+            'ReactJS',
+            'GatsbyJS',
+            'Netlify'
+            '.NET'
+            '.NET Core'
+        ], }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+  # TR
+  - name: 'blogTr'
+    label: 'Blog (Turkish)'
+    filter: { field: language, value: tr }
+    folder: 'src/pages/posts'
+    media_folder: 'static/images'
+    public_folder: '/images'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    extension: 'tr.md'
+    editor:
+      preview: true
+    fields:
+      - { label: 'Language', name: 'language', widget: hidden, default: tr }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Author', name: 'author', widget: 'string', default: 'Burhan Savcı' }
+      - { label: 'Tag', name: 'tag', widget: 'select', options:
+        [
+            'Javascript',
+            'ReactJS',
+            'GatsbyJS',
+            'Netlify'
+            '.NET'
+            '.NET Core'
+        ], }
       - { label: 'Body', name: 'body', widget: 'markdown' }

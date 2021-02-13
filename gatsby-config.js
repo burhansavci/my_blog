@@ -6,16 +6,14 @@ module.exports = {
     title: `Burhan Savcı Blog`,
     description: `My personal blog site`,
     author: `Burhan Savcı`,
-    bioPart1: `I'm a developer in Istanbul Turkey and software developer at ePlatform, I've been building websites and web applications since 2019.`,
-    bioPart2: `I focus mainly on backend development, design patterns, architectural patterns, improving software engineering process and code quality and performance. Besides, I interested in frontend development.`,
-    navigation: [
-      { label: "Home", url: "/" },
-      { label: "About", url: "/about" }
-    ],
     github: `burhansavci`,
     linkedin: `burhan-savci`
   },
   plugins: [
+    `gatsby-plugin-netlify-cms`,
+    `gatsby-transformer-json`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
@@ -27,17 +25,12 @@ module.exports = {
         }
       }
     },
-    `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [`gatsby-remark-prismjs`]
       }
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-netlify-cms`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -52,6 +45,21 @@ module.exports = {
         name: `pages`
       }
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/config/translations`,
+        name: `translations`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/config/navigations`,
+        name: `navigations`,
+      },
+    },
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

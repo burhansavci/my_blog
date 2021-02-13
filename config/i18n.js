@@ -16,6 +16,6 @@ module.exports = {
     siteLanguage: `tr`,
     ogLanguage: `tr-TR`,
     defaultTitle: `Burhan Savcı Blog`,
-    defaultDescription: `Benim kişisel blog sitem`,
+    defaultDescription: `Kişisel blog sitem`,
   },
 }

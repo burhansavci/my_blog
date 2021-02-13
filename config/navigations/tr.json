@@ -1,0 +1,12 @@
+{
+  "navigations": [
+    {
+      "label": "Ana Sayfa",
+      "url": "/"
+    },
+    {
+      "label": "Hakkımda",
+      "url": "/about"
+    }
+  ]
+}

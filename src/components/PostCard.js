@@ -1,20 +1,21 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Link } from "gatsby"
-import { slugify } from "../util/utilityFunctions"
+import { slugify } from "../utils/gatsby-node-helpers"
+import { LocalizedLink, useTranslations } from "."
 
 const PostCard = ({ post }) => {
   const url = `/${post.fields.slug}/`
+  const { min, read, time } = useTranslations()
   return (
     <div>
       <header className="post-card-header">
         {post.frontmatter.tag &&
-        <Link to={`/tag/${slugify(post.frontmatter.tag)}`} className="post-card-primary-tag">
+        <LocalizedLink to={`/tag/${slugify(post.frontmatter.tag)}`} className="post-card-primary-tag">
           {post.frontmatter.tag}
-        </Link>
+        </LocalizedLink>
         }
       </header>
-      <Link to={url} className="post-card">
+      <LocalizedLink to={url} className="post-card">
         <header className="post-card-header">
           <h2 className="post-card-title">{post.frontmatter.title}</h2>
         </header>
@@ -23,10 +24,10 @@ const PostCard = ({ post }) => {
           <div className="post-card-footer-left">
             <time dateTime={post.frontmatter.date}>{post.frontmatter.date}</time>
             <span className="bull">•</span>
-            {post.timeToRead} min read
+            {post.timeToRead} {min} {read} {time}
           </div>
         </footer>
-      </Link>
+      </LocalizedLink>
     </div>
   )
 }

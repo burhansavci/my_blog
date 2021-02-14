@@ -7,5 +7,7 @@
   "page": "Sayfa",
   "next": "Sonraki",
   "prev": "Önceki",
-  "of": "/"
+  "of": "/",
+  "pageNotFound": "Sayfa bulunamadı",
+  "returnHome": "ana sayfaya dön"
 }

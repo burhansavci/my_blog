@@ -1,20 +1,18 @@
 import React from "react"
 
-import { Link } from "gatsby"
-import { Layout, SEO } from "../components"
+import { LocalizedLink, SEO, useTranslations } from "../components"
 
-const NotFoundPage = () => (
-  <Layout>
+const NotFoundPage = () => {
+  const { pageNotFound, returnHome } = useTranslations()
+  return <>
     <SEO title="404: Not found" />
-    <div className="container">
-      <article className="content" style={{ textAlign: `center` }}>
-        <h1 className="content-title">Error 404</h1>
-        <section className="content-body">
-          Page not found, <Link to="/">return home</Link> to start over
-        </section>
-      </article>
-    </div>
-  </Layout>
-)
+    <article className="content" style={{ textAlign: `center` }}>
+      <h1 className="content-title">Error 404</h1>
+      <section className="content-body">
+        {pageNotFound}, <LocalizedLink to="/">{returnHome}</LocalizedLink>
+      </section>
+    </article>
+  </>
+}
 
 export default NotFoundPage

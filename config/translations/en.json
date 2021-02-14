@@ -7,5 +7,7 @@
   "page": "Page",
   "next": "Next",
   "prev": "Previous",
-  "of": "of"
+  "of": "of",
+  "pageNotFound": "Page not found",
+  "returnHome": "return home"
 }

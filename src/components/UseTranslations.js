@@ -44,6 +44,8 @@ const query = graphql`
                         next
                         prev
                         of
+                        pageNotFound
+                        returnHome
                     }
                 }
             }

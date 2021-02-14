@@ -1,8 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { graphql } from "gatsby"
-
-import { Layout, PostCard, Pagination } from "../components"
+import { PostCard, Pagination, useTranslations } from "../components"
+import { useHome } from "../hooks/home"
 
 const About = ({ data, pageContext }) => {
   const { site, allMarkdownRemark, profileImage } = data
@@ -10,35 +10,38 @@ const About = ({ data, pageContext }) => {
   const githubUrl = siteMetadata.github ? `https://github.com/${siteMetadata.github.replace(/^@/, ``)}` : null
   const linkedinUrl = siteMetadata.linkedin ? `  https://www.linkedin.com/in/${siteMetadata.linkedin.replace(/^@/, ``)}` : null
   const posts = allMarkdownRemark.edges
+  const { setHomePage } = useHome()
+  setHomePage(false)
+  // useTranslations is aware of the global context (and therefore also "locale")
+  // so it'll automatically give back the right translations
+  const { bioPart1, bioPart2 } = useTranslations()
 
   return (
     <>
-      <Layout>
-        <div className="container">
-          <header className="author-header">
-            <div className="author-header-content">
-              <h1>{siteMetadata.author}</h1>
-              <p style={{ marginBottom: 12 }}>{siteMetadata.bioPart1}</p>
-              <p>{siteMetadata.bioPart2}</p>
-              <div className="author-header-meta">
-                {linkedinUrl && <a className="author-header-item" href={linkedinUrl} target="_blank"
-                                   rel="noopener noreferrer">Linkedin</a>}
-                {githubUrl && <a className="author-header-item" href={githubUrl} target="_blank"
-                                 rel="noopener noreferrer">Github</a>}
-              </div>
+      <div className="container">
+        <header className="author-header">
+          <div className="author-header-content">
+            <h1>{siteMetadata.author}</h1>
+            <p style={{ marginBottom: 12 }}>{bioPart1}</p>
+            <p>{bioPart2}</p>
+            <div className="author-header-meta">
+              {linkedinUrl && <a className="author-header-item" href={linkedinUrl} target="_blank"
+                                 rel="noopener noreferrer">Linkedin</a>}
+              {githubUrl && <a className="author-header-item" href={githubUrl} target="_blank"
+                               rel="noopener noreferrer">Github</a>}
             </div>
-            <div className="author-header-image">
-              {profileImage && <img src={profileImage.childImageSharp.fixed.src} alt={siteMetadata.author} />}
-            </div>
-          </header>
-          <section className="post-feed">
-            {posts.map(({ node }) => (
-              <PostCard key={node.id} post={node} />
-            ))}
-          </section>
-          <Pagination pageContext={pageContext} />
-        </div>
-      </Layout>
+          </div>
+          <div className="author-header-image">
+            {profileImage && <img src={profileImage.childImageSharp.fixed.src} alt={siteMetadata.author} />}
+          </div>
+        </header>
+        <section className="post-feed">
+          {posts.map(({ node }) => (
+            <PostCard key={node.id} post={node} />
+          ))}
+        </section>
+        <Pagination pageContext={pageContext} />
+      </div>
     </>
   )
 }
@@ -54,18 +57,17 @@ About.propTypes = {
 export default About
 
 export const pageQuery = graphql`
-    query ($limit: Int!, $skip: Int!) {
+    query ($locale: String!, $dateFormat: String!, $limit: Int!, $skip: Int!) {
         site {
             siteMetadata {
                 author
-                bioPart1
-                bioPart2
                 github
                 linkedin
             }
         }
         allMarkdownRemark(
             sort: { order: DESC, fields: [frontmatter___date] },
+            filter: { fields: { locale: { eq: $locale } } },
             limit: $limit,
             skip: $skip
         ) {
@@ -75,7 +77,7 @@ export const pageQuery = graphql`
                     timeToRead
                     frontmatter {
                         title
-                        date(formatString: "Do MMM YYYY")
+                        date(formatString: $dateFormat)
                         author
                         tag
                     }

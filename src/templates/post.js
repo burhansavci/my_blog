@@ -1,57 +1,58 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { graphql, Link } from "gatsby"
-
-import Layout from "../components/Layout"
-import { slugify } from "../util/utilityFunctions"
+import { graphql } from "gatsby"
+import { slugify } from "../utils/gatsby-node-helpers"
 import { DiscussionEmbed } from "disqus-react"
+import { useHome } from "../hooks/home"
+import { LocalizedLink, useTranslations } from "../components"
+
 
 const Post = ({ data, pageContext }) => {
   const post = data.markdownRemark
   const baseUrl = "https://burhansavci.netlify.app/"
-
   const disqusShortname = "https-burhansavci-netlify-app"
   const disqusConfig = {
     identifier: data.markdownRemark.id,
     title: post.title,
     url: baseUrl + pageContext.slug
   }
+  const { setHomePage } = useHome()
+  setHomePage(false)
+  const { min, read, time } = useTranslations()
 
   return (
     <>
-      <Layout>
-        <div className="container">
-          <article className="content">
-            <section className="post-full-content">
+      <div className="container">
+        <article className="content">
+          <section className="post-full-content">
 
-              <header className="post-full-header">
+            <header className="post-full-header">
 
-                <section className="post-full-tags">
-                  <Link to={`/tag/${slugify(post.frontmatter.tag)}`}>{post.frontmatter.tag}</Link>
+              <section className="post-full-tags">
+                <LocalizedLink to={`/tag/${slugify(post.frontmatter.tag)}`}>{post.frontmatter.tag}</LocalizedLink>
+              </section>
+
+              <h1 className="post-full-title">{post.frontmatter.title}</h1>
+
+              <div className="post-full-byline">
+                <section className="post-full-byline-content">
+                  <time dateTime={post.frontmatter.date}>{post.frontmatter.date}</time>
+                  <span className="bull">•</span>
+                  {post.timeToRead} {min} {read} {time}
                 </section>
+              </div>
 
-                <h1 className="post-full-title">{post.frontmatter.title}</h1>
+            </header>
 
-                <div className="post-full-byline">
-                  <section className="post-full-byline-content">
-                    <time dateTime={post.frontmatter.date}>{post.frontmatter.date}</time>
-                    <span className="bull">•</span>
-                    {post.timeToRead} min read
-                  </section>
-                </div>
-
-              </header>
-
-              <section
-                className="content-body load-external-scripts"
-                dangerouslySetInnerHTML={{ __html: post.html }}
-              />
-            </section>
-            <DiscussionEmbed style={{ margin: "0 auto", maxWidth: "840px" }} shortname={disqusShortname}
-                             config={disqusConfig} />
-          </article>
-        </div>
-      </Layout>
+            <section
+              className="content-body load-external-scripts"
+              dangerouslySetInnerHTML={{ __html: post.html }}
+            />
+          </section>
+          <DiscussionEmbed style={{ margin: "0 auto", maxWidth: "840px" }} shortname={disqusShortname}
+                           config={disqusConfig} />
+        </article>
+      </div>
     </>
   )
 }
@@ -74,8 +75,8 @@ Post.propTypes =
 export default Post
 
 export const postQuery = graphql`
-    query ($slug: String!) {
-        markdownRemark(fields: {slug: {eq: $slug}}) {
+    query($slug: String!, $locale: String!) {
+        markdownRemark(fields: { slug: { eq: $slug }, locale: { eq: $locale } }) {
             id
             html
             timeToRead
@@ -86,4 +87,5 @@ export const postQuery = graphql`
                 tag
             }
         }
-    }`
+    }
+`

@@ -1,43 +1,44 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
+import React from "react"
+import PropTypes from "prop-types"
+import { graphql } from "gatsby"
+import { PostCard, Pagination, SEO } from "../components"
+import { useHome } from "../hooks/home"
 
-import { Layout, PostCard, Pagination, SEO } from "../components"
-
-const Index = ({ data,  pageContext }) => {
+const Index = ({ data, pageContext }) => {
   const posts = data.allMarkdownRemark.edges
+  const { setHomePage } = useHome()
+  setHomePage(true)
 
   return (
     <>
-      <Layout isHome={true}>
-        <SEO title="Home" />
-        <div className="container">
-          <section className="post-feed">
-            {posts.map(({ node }) => (
-              <PostCard key={node.id} post={node} />
-            ))}
-          </section>
-          <Pagination pageContext={pageContext} />
-        </div>
-      </Layout>
+      <SEO title="Home" />
+      <div className="container">
+        <section className="post-feed">
+          {posts.map(({ node }) => (
+            <PostCard key={node.id} post={node} />
+          ))}
+        </section>
+        <Pagination pageContext={pageContext} />
+      </div>
     </>
   )
 }
 
 Index.propTypes = {
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.object.isRequired,
+    allMarkdownRemark: PropTypes.object.isRequired
   }).isRequired,
-  pageContext: PropTypes.object,
+  pageContext: PropTypes.object
 }
 
 export default Index
 
 export const pageQuery = graphql`
-    query ($limit: Int!, $skip: Int!) {
+    query($locale: String!, $dateFormat: String!, $limit: Int!, $skip: Int!) {
         allMarkdownRemark(
-            sort: { order: DESC, fields: [frontmatter___date] },
-            limit: $limit,
+            sort: { order: DESC, fields: [frontmatter___date] }
+            filter: { fields: { locale: { eq: $locale } } }
+            limit: $limit
             skip: $skip
         ) {
             edges {
@@ -46,11 +47,12 @@ export const pageQuery = graphql`
                     timeToRead
                     frontmatter {
                         title
-                        date(formatString: "Do MMM YYYY")
+                        date(formatString: $dateFormat)
                         author
                         tag
                     }
                     fields {
+                        locale
                         slug
                     }
                     excerpt

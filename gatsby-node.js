@@ -115,7 +115,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     paginate({
       createPage,
       items: posts.filter(post => post.node.fields.locale === lang),
-      itemsPerPage: 1,
+      itemsPerPage: 3,
       component: aboutTemplate,
       pathPrefix: ({ pageNumber }) => {
         if (pageNumber === 0) {
@@ -147,7 +147,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       paginate({
         createPage,
         items: postsByTag[tag],
-        itemsPerPage: 1,
+        itemsPerPage: 6,
         component: tagsTemplate,
         pathPrefix: ({ pageNumber }) => {
           if (pageNumber === 0) {
@@ -189,7 +189,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     paginate({
       createPage,
       items: posts.filter(post => post.node.fields.locale === lang),
-      itemsPerPage: 1,
+      itemsPerPage: 6,
       component: indexTemplate,
       pathPrefix: ({ pageNumber }) => {
         if (pageNumber === 0) {

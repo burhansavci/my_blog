@@ -1,0 +1,52 @@
+import { useStaticQuery, graphql } from "gatsby"
+import { useLocale } from "../hooks/locale"
+
+const UseTranslations = () => {
+  // Grab the locale (passed through context) from the Locale Provider
+  // through useLocale() hook
+  const { locale } = useLocale()
+  // Query the JSON files in <rootDir>/config/translations
+  const { rawData } = useStaticQuery(query)
+
+  // Simplify the response from GraphQL
+  const simplified = rawData.edges.map(item => {
+    return {
+      name: item.node.name,
+      translations: item.node.translations
+    }
+  })
+
+  // Only return translations for the current locale
+  const { translations } = simplified.filter(
+    lang => lang.name === locale
+  )[0]
+
+  return translations
+}
+
+export default UseTranslations
+
+const query = graphql`
+    query useTranslations {
+        rawData: allFile(
+            filter: { sourceInstanceName: { eq: "translations" } }
+        ) {
+            edges {
+                node {
+                    name
+                    translations: childTranslationsJson {
+                        bioPart1
+                        bioPart2
+                        read
+                        min
+                        time
+                        page
+                        next
+                        prev
+                        of
+                    }
+                }
+            }
+        }
+    }
+`

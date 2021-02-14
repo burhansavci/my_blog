@@ -837,6 +837,27 @@ h6 {
     text-decoration: none;
 }
 
+.site-mast-left {
+    display: flex;
+    align-items: center;
+}
+.site-lang{
+    color: var(--color-base);
+    display: inline-block;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    text-decoration: none !important;
+    opacity: 0.6;
+}
+.site-lang:hover{
+    color: var(--color-primary);
+    font-weight: bold;
+    opacity: 1;
+}
+.site-lang.is-active {
+    font-weight: bold;
+    opacity: 1;
+}
 /* Main
 /* ---------------------------------------------------------- */
 

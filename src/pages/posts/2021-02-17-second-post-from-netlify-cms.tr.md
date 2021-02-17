@@ -8,9 +8,9 @@ tag: Netlify
 ---
 Netlify CMS'den İkinci Gönderi TEST 2
 
-![Test img 2](images/uploads/test_img_2.jpg "Test img 2")
+![Test img 2](/images/uploads/test_img_2.jpg "Test img 2")
 
-```javascript
+```js
 import React from 'react';
 import { graphql } from 'gatsby';
 import TitlePage from '../components/TitlePage';
@@ -55,6 +55,6 @@ export const query = graphql`
 export default Page;
 ```
 
-![Test img 1](images/uploads/test_img_1.jpg "Test img 1")
+![Test img 1](/images/uploads/test_img_1.jpg "Test img 1")
 
-![Test img 3](images/uploads/test_img_3.jpg "Test img 3")
+![Test img 3](/images/uploads/test_img_3.jpg "Test img 3")

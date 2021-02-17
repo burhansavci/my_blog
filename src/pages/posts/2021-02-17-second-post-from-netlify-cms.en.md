@@ -10,7 +10,7 @@ tag: Netlify
 
 Second Post From Netlify CMS TEST 2
 
-![Test img 2](images/uploads/test_img_2.jpg "Test img 2")
+![Test img 2](/images/uploads/test_img_2.jpg "Test img 2")
 
 ```javascript
 import React from 'react';
@@ -59,8 +59,8 @@ export default Page;
 
 
 
-![Test img 1](images/uploads/test_img_1.jpg "Test img 1")
+![Test img 1](/images/uploads/test_img_1.jpg "Test img 1")
 
 
 
-![Test img 3](images/uploads/test_img_3.jpg "Test img 3")
+![Test img 3](/images/uploads/test_img_3.jpg "Test img 3")

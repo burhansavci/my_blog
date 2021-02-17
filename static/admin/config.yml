@@ -2,8 +2,8 @@ backend:
   name: git-gateway
   branch: master
 
-media_folder: static/images
-public_folder: /images
+media_folder: 'static/images/uploads'
+public_folder: 'images/uploads'
 
 collections:
   # EN
@@ -11,8 +11,6 @@ collections:
     label: 'Blog (English)'
     filter: { field: language, value: en }
     folder: 'src/pages/posts'
-    media_folder: 'static/images'
-    public_folder: '/images'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     identifier_field: slug
@@ -44,8 +42,6 @@ collections:
     label: 'Blog (Turkish)'
     filter: { field: language, value: tr }
     folder: 'src/pages/posts'
-    media_folder: 'static/images'
-    public_folder: '/images'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     identifier_field: slug

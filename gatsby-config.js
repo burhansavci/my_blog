@@ -14,6 +14,13 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/static/images/uploads`,
+        name: `uploads`
+      }
+    },
+    {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         trackingIds: [
@@ -27,7 +34,22 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: [`gatsby-remark-prismjs`]
+        plugins: [
+          {
+            resolve: `gatsby-remark-relative-images`,
+            options: {
+              name: `uploads`
+            }
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1024,
+              linkImagesToOriginal: false
+            }
+          },
+          `gatsby-remark-prismjs`
+        ]
       }
     },
     {
@@ -48,15 +70,15 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/config/translations`,
-        name: `translations`,
-      },
+        name: `translations`
+      }
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/config/navigations`,
-        name: `navigations`,
-      },
+        name: `navigations`
+      }
     },
     `gatsby-plugin-react-helmet`,
     {
@@ -72,11 +94,11 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-netlify-cms',
+      resolve: `gatsby-plugin-netlify-cms`,
       options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
-      },
-    },
+        modulePath: `${__dirname}/src/cms/cms.js`
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

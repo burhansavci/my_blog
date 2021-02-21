@@ -7,7 +7,8 @@ module.exports = {
     description: `My personal blog site`,
     author: `Burhan Savcı`,
     github: `burhansavci`,
-    linkedin: `burhan-savci`
+    linkedin: `burhan-savci`,
+    siteUrl: `https://burhansavci.netlify.app`
   },
   plugins: [
     `gatsby-transformer-json`,

@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { graphql } from "gatsby"
-import { PostCard, Pagination } from "../components"
+import { PostCard, Pagination, SEO } from "../components"
 import { useHome } from "../hooks/home"
 
 const Tag = ({ data, pageContext }) => {
@@ -12,6 +12,7 @@ const Tag = ({ data, pageContext }) => {
 
   return (
     <>
+      <SEO title={tagName} />
       <div className="container">
         <header className="tag-header">
           <h1>{tagName}</h1>

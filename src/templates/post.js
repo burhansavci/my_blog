@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import { slugify } from "../utils/gatsby-node-helpers"
 import { DiscussionEmbed } from "disqus-react"
 import { useHome } from "../hooks/home"
-import { LocalizedLink, useTranslations } from "../components"
+import { LocalizedLink, SEO, useTranslations } from "../components"
 
 
 const Post = ({ data, pageContext }) => {
@@ -22,6 +22,10 @@ const Post = ({ data, pageContext }) => {
 
   return (
     <>
+      <SEO
+        title={post.frontmatter.title}
+        description={post.excerpt}
+      />
       <div className="container">
         <article className="content">
           <section className="post-full-content">
@@ -80,6 +84,7 @@ export const postQuery = graphql`
             id
             html
             timeToRead
+            excerpt
             frontmatter {
                 title
                 author

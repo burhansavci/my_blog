@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { graphql } from "gatsby"
-import { PostCard, Pagination, useTranslations } from "../components"
+import { PostCard, Pagination, useTranslations, SEO } from "../components"
 import { useHome } from "../hooks/home"
 
 const About = ({ data, pageContext }) => {
@@ -18,6 +18,7 @@ const About = ({ data, pageContext }) => {
 
   return (
     <>
+      <SEO title="About" />
       <div className="container">
         <header className="author-header">
           <div className="author-header-content">

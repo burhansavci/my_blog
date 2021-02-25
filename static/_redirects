@@ -3,3 +3,4 @@
 
 https://burhansavci.netlify.com/*      https://burhansavci.com/:splat    301!
 http://burhansavci.netlify.com/*       https://burhansavci.com/:splat    301!
+http://burhansavci.com/*               https://burhansavci.com/:splat    301!

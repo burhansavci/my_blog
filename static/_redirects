@@ -1,0 +1,5 @@
+# Netlify redirects file, edit with your domain
+# https://www.netlify.com/docs/redirects/
+
+https://burhansavci.netlify.com/*      https://burhansavci.com/:splat    301!
+http://burhansavci.netlify.com/*       https://burhansavci.com/:splat    301!

@@ -16,7 +16,7 @@ const Header = () => {
   const githubUrl = siteMetadata.github ? `https://github.com/${siteMetadata.github.replace(/^@/, ``)}` : null
   const linkedinUrl = siteMetadata.linkedin ? `  https://www.linkedin.com/in/${siteMetadata.linkedin.replace(/^@/, ``)}` : null
   return (
-    <BackgroundImage className="site-head" fluid={data.coverImage.childImageSharp.fluid}>
+    <BackgroundImage Tag={`header`} className="site-head" fluid={data.coverImage.childImageSharp.fluid} tag>
       <div className="container">
 
         <div className="site-mast">
@@ -56,7 +56,6 @@ const Header = () => {
 
       </div>
     </BackgroundImage>
-
   )
 }
 const query = graphql`

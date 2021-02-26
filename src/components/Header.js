@@ -3,6 +3,7 @@ import Img from "gatsby-image"
 import { LocalizedLink, Navigation, useNavigation, LanguageSwitcher, useTranslations } from "."
 import React from "react"
 import { useHome } from "../hooks/home"
+import BackgroundImage from "gatsby-background-image"
 
 const Header = () => {
 
@@ -15,8 +16,7 @@ const Header = () => {
   const githubUrl = siteMetadata.github ? `https://github.com/${siteMetadata.github.replace(/^@/, ``)}` : null
   const linkedinUrl = siteMetadata.linkedin ? `  https://www.linkedin.com/in/${siteMetadata.linkedin.replace(/^@/, ``)}` : null
   return (
-    <header className="site-head"
-            style={{ ...data.coverImage.childImageSharp.fixed.src && { backgroundImage: `url(${data.coverImage.childImageSharp.fixed.src})` } }}>
+    <BackgroundImage className="site-head" fluid={data.coverImage.childImageSharp.fluid}>
       <div className="container">
 
         <div className="site-mast">
@@ -55,7 +55,7 @@ const Header = () => {
         </nav>
 
       </div>
-    </header>
+    </BackgroundImage>
 
   )
 }
@@ -77,8 +77,8 @@ const query = graphql`
         }
         coverImage: file(relativePath: { eq: "cover-image.png" }) {
             childImageSharp {
-                fixed(width: 2000, height: 666) {
-                    ...GatsbyImageSharpFixed
+                fluid(maxWidth: 2000, maxHeight: 666) {
+                    ...GatsbyImageSharpFluid
                 }
             }
         }

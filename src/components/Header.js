@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
-import { LocalizedLink, Navigation, useNavigation, LanguageSwitcher } from "."
+import { LocalizedLink, Navigation, useNavigation, LanguageSwitcher, useTranslations } from "."
 import React from "react"
 import { useHome } from "../hooks/home"
 
@@ -8,6 +8,7 @@ const Header = () => {
 
   const { isHome } = useHome()
   const navigations = useNavigation()
+  const { siteTitle, siteDescription } = useTranslations()
 
   const data = useStaticQuery(query)
   const { siteMetadata } = data.site
@@ -22,7 +23,7 @@ const Header = () => {
 
           <div className="site-mast-left">
             <LocalizedLink to="/">
-              <Img fixed={data.logo.childImageSharp.fixed} alt={siteMetadata.title} />
+              <Img fixed={data.logo.childImageSharp.fixed} alt={siteTitle} />
             </LocalizedLink>
             <LanguageSwitcher />
           </div>
@@ -42,8 +43,8 @@ const Header = () => {
 
         {isHome ? (
           <div className="site-banner">
-            <h1 className="site-banner-title">{siteMetadata.title}</h1>
-            <p className="site-banner-desc">{siteMetadata.description}</p>
+            <h1 className="site-banner-title">{siteTitle}</h1>
+            <p className="site-banner-desc">{siteDescription}</p>
           </div>
         ) : null}
 
@@ -62,9 +63,7 @@ const query = graphql`
     query HeaderQuery {
         site {
             siteMetadata {
-                title
                 author
-                description
                 github
                 linkedin
             }

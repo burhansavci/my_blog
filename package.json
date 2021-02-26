@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "burhan-savci-blog",
   "private": true,
-  "description": "My Blog site",
-  "version": "0.1.0",
+  "description": "My Blog Site",
+  "version": "1.0.0",
   "author": "Burhan Savci <burhansavci@gmail.com>",
   "dependencies": {
     "disqus-react": "^1.0.10",

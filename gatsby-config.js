@@ -8,7 +8,7 @@ module.exports = {
     author: `Burhan Savcı`,
     github: `burhansavci`,
     linkedin: `burhan-savci`,
-    siteUrl: `https://burhansavci.netlify.app`
+    siteUrl: `https://www.burhansavci.com`
   },
   plugins: [
     `gatsby-transformer-json`,
@@ -85,11 +85,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `burhan-savci-blog`,
+        short_name: `burhan-savci`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#6b6b6b`,
+        theme_color: `#6b6b6b`,
         display: `minimal-ui`,
         icon: `src/images/icon.png` // This path is relative to the root of the site.
       }

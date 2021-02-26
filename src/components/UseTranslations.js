@@ -46,6 +46,8 @@ const query = graphql`
                         of
                         pageNotFound
                         returnHome
+                        siteTitle
+                        siteDescription
                     }
                 }
             }

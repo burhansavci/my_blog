@@ -31,10 +31,14 @@ const Header = () => {
           <div className="site-mast-right">
             {siteMetadata.github && <a href={githubUrl} className="site-nav-icon-item" target="_blank"
                                        rel="noopener noreferrer"><img className="site-nav-icon"
+                                                                      width="15px"
+                                                                      height="15px"
                                                                       src="/images/icons/github.svg"
                                                                       alt="Github" /></a>}
             {siteMetadata.linkedin && <a href={linkedinUrl} className="site-nav-icon-item" target="_blank"
                                          rel="noopener noreferrer"><img className="site-nav-icon"
+                                                                        width="15px"
+                                                                        height="15px"
                                                                         src="/images/icons/linkedin.svg"
                                                                         alt="Linkedin" /></a>}
           </div>

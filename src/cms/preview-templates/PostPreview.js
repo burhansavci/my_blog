@@ -1,9 +1,9 @@
 import React from "react"
-import moment from 'moment'
+import moment from "moment"
 
-const PostPreview = ({ entry }) => {
+const PostPreview = ({ entry, widgetFor }) => {
   const data = entry.getIn(["data"]).toJS()
-  const postDate = moment(data.date).format('MMMM DD, YYYY')
+  const postDate = moment(data.date).format("MMMM DD, YYYY")
   return (
     <div className="container">
       <article className="content">
@@ -24,11 +24,7 @@ const PostPreview = ({ entry }) => {
             </div>
 
           </header>
-
-          <section
-            className="content-body load-external-scripts"
-            dangerouslySetInnerHTML={{ __html: data.body }}
-          />
+          <div className="content-body load-external-scripts">{widgetFor("body")}</div>
         </section>
       </article>
     </div>
